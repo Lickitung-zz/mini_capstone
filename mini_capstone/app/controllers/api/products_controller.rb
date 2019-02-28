@@ -13,4 +13,14 @@ class Api::ProductsController < ApplicationController
     @product3 = Product.third
     render 'stick.json.jbuilder'
   end
+
+  def all_products
+    @products = Product.all
+    render 'products.json.jbuilder'
+  end
+
+  def any_product
+    @product = params[:product]
+    render 'any_product.json.jbuilder'
+  end
 end

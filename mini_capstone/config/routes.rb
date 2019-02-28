@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     get '/product1' => 'products#rock'
     get '/product2' => 'products#leaf'
     get '/product3' => 'products#stick'
+    get '/products' => 'products#all_products'
+    get '/product' => 'products#any_product'
   end
 end

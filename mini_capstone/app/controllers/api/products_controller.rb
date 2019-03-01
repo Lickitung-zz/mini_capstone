@@ -20,7 +20,8 @@ class Api::ProductsController < ApplicationController
   end
 
   def any_product
-    @product = params[:product]
+    the_id = params[:product_id]
+    @product = Product.find_by(id: the_id)
     render 'any_product.json.jbuilder'
   end
 end

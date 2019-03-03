@@ -37,10 +37,11 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
+    @nothing = "nothing was entered here"
     @product = Product.new(
-      name: params[:input_name],
-      price: params[:input_price],
-      description: params[:input_description]
+      name: params[:name] || @nothing,
+      price: params[:price] || @nothing,
+      description: params[:description] || @nothing
     )
     @product.save
     render 'show.json.jbuilder'

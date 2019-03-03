@@ -7,11 +7,10 @@ Rails.application.routes.draw do
   #   get "/photos" => "photos#index"
   # end
   namespace :api do
-    get '/product1' => 'products#rock'
-    get '/product2' => 'products#leaf'
-    get '/product3' => 'products#stick'
-    get '/products' => 'products#all_products'
-    get '/product' => 'products#any_product'
-    get '/product/:product_id' => 'products#any_product'
+    get '/products' => 'products#index' #index route
+    get '/products/:id' => 'products#show' #show route
+    post '/products/' => 'products#create' #create route
+    put '/products/:id/edit' => 'products#update' #update route
+    delete '/products/:id' => 'products#delete' #delete route
   end
 end

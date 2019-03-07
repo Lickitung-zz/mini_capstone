@@ -1,30 +1,4 @@
 class Api::ProductsController < ApplicationController
-  def rock
-    @product1 = Product.first
-    render 'rock.json.jbuilder'
-  end
-
-  def leaf
-    @product2 = Product.second
-    render 'leaf.json.jbuilder'
-  end
-
-  def stick
-    @product3 = Product.third
-    render 'stick.json.jbuilder'
-  end
-
-  def all_products
-    @products = Product.all
-    render 'products.json.jbuilder'
-  end
-
-  def any_product
-    the_id = params[:product_id]
-    @product = Product.find_by(id: the_id)
-    render 'any_product.json.jbuilder'
-  end
-
   def index
     @products = Product.all
     render 'index.json.jbuilder'
@@ -41,7 +15,8 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name] || @nothing,
       price: params[:price] || @nothing,
-      description: params[:description] || @nothing
+      description: params[:description] || @nothing,
+      image_url: params[:image_url] || @nothing
     )
     @product.save
     render 'show.json.jbuilder'
@@ -52,7 +27,7 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
-    @product.image_url = params[:image_url]
+    @product.image_url = params[:image_url] || @product.image_url
     @product.save
     render 'show.json.jbuilder'
   end

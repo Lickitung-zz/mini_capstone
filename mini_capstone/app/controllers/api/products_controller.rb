@@ -18,8 +18,12 @@ class Api::ProductsController < ApplicationController
       description: params[:description] || @nothing,
       image_url: params[:image_url] || @nothing
     )
+    if @product.save
+      render 'show.json.jbuilder'
+    else
+      render 'error.json.jbuilder'
+    end
     @product.save
-    render 'show.json.jbuilder'
   end
 
   def update
@@ -28,8 +32,12 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.description = params[:description] || @product.description
     @product.image_url = params[:image_url] || @product.image_url
+    if @product.save
+      render 'show.json.jbuilder'
+    else
+      render 'error.json.jbuilder'
+    end
     @product.save
-    render 'show.json.jbuilder'
   end
 
   def delete

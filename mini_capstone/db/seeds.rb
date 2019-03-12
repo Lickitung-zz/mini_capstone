@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-rock = Product.new(name: "rock", price: "0.25", description: "a rock that someone found outside")
+goodwill = Supplier.new(name: "Goodwill", email: "goodwill@goodwill.com", phone_number: "1-800-GOODWILL")
 
-rock.save
+goodwill.save
+
+bestbuy = Supplier.create(name: "BestBuy", email: "bestbuy@bestbuy.com", phone_number: "1-800-BESTBUY")

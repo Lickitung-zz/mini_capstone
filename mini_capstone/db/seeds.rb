@@ -6,8 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-goodwill = Supplier.new(name: "Goodwill", email: "goodwill@goodwill.com", phone_number: "1-800-GOODWILL")
-
-goodwill.save
-
-bestbuy = Supplier.create(name: "BestBuy", email: "bestbuy@bestbuy.com", phone_number: "1-800-BESTBUY")
+piranah_url = Image.create(url: "http://1.bp.blogspot.com/-Od1Wn0hB7Q4/TuGWKI5kZ9I/AAAAAAAAALU/s-den-Z3DlQ/s1600/piranha.jpg")
+piranah_url2 = Image.create(url: "https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/danishswimme.jpg")

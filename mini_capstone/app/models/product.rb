@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  belongs_to :supplier
+  has_many :images
+
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { greater_than: 0}
   validates :description, presence: true, length: { in: 10..500 }
@@ -20,4 +23,9 @@ class Product < ApplicationRecord
     total = tax + price
     return total
   end
+
+
+  #def products
+    #Product.where(supplier_id: id)
+  #end
 end

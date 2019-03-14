@@ -17,6 +17,8 @@ class Api::ProductsController < ApplicationController
   end
 
   def show
+    p "supplier_id"
+    supplier_id
     the_id = params[:id]
     @product = Product.find_by(id: the_id)
     render 'show.json.jbuilder'

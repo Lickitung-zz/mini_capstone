@@ -1,4 +1,6 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     search_term = params[:search]
     if search_term
@@ -17,21 +19,18 @@ class Api::ProductsController < ApplicationController
   end
 
   def show
-    p "supplier_id"
-    supplier_id
-    the_id = params[:id]
-    @product = Product.find_by(id: the_id)
+    p current_user
+    @product = Product.find(params[:id])
     render 'show.json.jbuilder'
   end
 
   def create
-    @nothing = "nothing was entered here"
+    nothing = "nothing was entered here"
     @product = Product.new(
-      name: params[:name] || @nothing,
-      price: params[:price] || @nothing,
-      description: params[:description] || @nothing,
-      image_url: params[:image_url] || @nothing,
-      supplier_id: params[:supplier_id] || @nothing
+      name: params[:name] || nothing,
+      price: params[:price] || nothing,
+      description: params[:description] || nothing,
+      supplier_id: params[:supplier_id] || nothing
     )
     if @product.save
       render 'show.json.jbuilder'

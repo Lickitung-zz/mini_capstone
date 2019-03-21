@@ -7,20 +7,29 @@ class Api::OrdersController < ApplicationController
   end
 
   def create
-    tax_rate = 0.09
-    product = Product.find_by(id: params[:product_id])
-    calculated_subtotal = params[:quantity].to_i * product.price
-    calculated_tax = calculated_subtotal * tax_rate
-    calculated_total = calculated_subtotal + calculated_tax
+    # tax_rate = 0.09
+    # product = Product.find_by(id: params[:product_id])
+    # calculated_subtotal = params[:quantity].to_i * product.price
+    # calculated_tax = calculated_subtotal * tax_rate
+    # calculated_total = calculated_subtotal + calculated_tax
 
-    @order = Order.create(
+    # @order = Order.create(
+    #   user_id: current_user.id,
+    #   product_id: params[:product_id],
+    #   quantity: params[:quantity],
+    #   subtotal: calculated_subtotal,
+    #   tax: calculated_tax,
+    #   total: calculated_total
+    # )
+    # render "show.json.jbuilder"
+    @carted_products = current_user.carted_products
+    @carted_products = @carted_products.where(status: "carted")
+
+    @order = Order.new(
       user_id: current_user.id,
-      product_id: params[:product_id],
-      quantity: params[:quantity],
-      subtotal: calculated_subtotal,
-      tax: calculated_tax,
-      total: calculated_total
+      subtotal: calculated_subtotal
     )
-    render "show.json.jbuilder"
+    @order.save
+    render 'show.json.jbuilder'
   end
 end

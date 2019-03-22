@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(
+    @product = Product.create!(
       name: params[:name],
       price: params[:price],
       description: params[:description],

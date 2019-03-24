@@ -1,5 +1,12 @@
 <h1>Testing products</h1>
 
 <% @products.each do |product| %>
-  <% product.id %>
+  <p>id: <%= product.id %></p>
+  <p>name: <%= product.name %></p>
+  <p>description: <%= product.description %></p>
+  <p>price: <%= product.price %></p>
+  <% if product.images[0] %>
+  <p><img src="<%= product.images[0].url %>"></p>
+  <% end %>
+  <hr>
 <% end %>

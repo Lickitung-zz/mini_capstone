@@ -7,3 +7,5 @@
 <% if @product.images[0] %>
 <p><img src="<%= @product.images[0].url %>"></p>
 <% end %>
+
+<a href="/products/<%= @product.id %>" data-method="delete" rel="nofollow">Delete product</a>
